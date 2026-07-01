@@ -1,0 +1,6 @@
+{
+  "version": "1.0.1",
+  "installerUrl": "https://example.com/PrivacyGuardianSetup-1.0.1.exe",
+  "releaseNotes": "Network monitor fixes and background tray mode.",
+  "sha256": ""
+}

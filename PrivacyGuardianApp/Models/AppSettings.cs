@@ -8,6 +8,6 @@ public sealed class AppSettings
     public bool RunInBackgroundOnClose { get; set; } = true;
     public bool AutoUpdateEnabled { get; set; } = true;
     public bool AutoInstallUpdates { get; set; }
-    public string UpdateManifestUrl { get; set; } = string.Empty;
+    public string UpdateManifestUrl { get; set; } = "https://raw.githubusercontent.com/yfuchsbbw/Privacy_Guardian/main/update-manifest.json";
     public string Language { get; set; } = "en-US";
 }

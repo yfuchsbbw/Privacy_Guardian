@@ -36,12 +36,12 @@ public sealed class SettingsService : ISettingsService
     public async Task SetAutoStartAsync(bool enabled, CancellationToken cancellationToken)
     {
         Current.AutoStartEnabled = enabled;
-        using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+        using var key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
         if (key is not null)
         {
             if (enabled)
             {
-                key.SetValue(Constants.ProductName, Environment.ProcessPath ?? string.Empty);
+                key.SetValue(Constants.ProductName, BuildBackgroundStartupCommand());
             }
             else
             {
@@ -50,5 +50,16 @@ public sealed class SettingsService : ISettingsService
         }
 
         await SaveAsync(cancellationToken);
+    }
+
+    private static string BuildBackgroundStartupCommand()
+    {
+        var executablePath = Environment.ProcessPath;
+        if (string.IsNullOrWhiteSpace(executablePath))
+        {
+            executablePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName ?? string.Empty;
+        }
+
+        return $"\"{executablePath}\" --background";
     }
 }

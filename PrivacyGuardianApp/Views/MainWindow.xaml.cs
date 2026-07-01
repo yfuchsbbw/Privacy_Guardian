@@ -8,6 +8,6 @@ public partial class MainWindow : Window
     public MainWindow(ITrayService trayService)
     {
         InitializeComponent();
-        Loaded += (_, _) => trayService.Initialize(this);
+        trayService.Initialize(this);
     }
 }

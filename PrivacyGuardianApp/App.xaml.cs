@@ -17,6 +17,7 @@ public partial class App : System.Windows.Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        ShutdownMode = ShutdownMode.OnExplicitShutdown;
         _startInBackground = e.Args.Any(argument =>
             argument.Equals("--background", StringComparison.OrdinalIgnoreCase) ||
             argument.Equals("/background", StringComparison.OrdinalIgnoreCase) ||
@@ -68,6 +69,11 @@ public partial class App : System.Windows.Application
         await _host.Services.GetRequiredService<IDatabaseInitializer>().InitializeAsync();
         var settings = _host.Services.GetRequiredService<ISettingsService>();
         await settings.LoadAsync(CancellationToken.None);
+        if (settings.Current.AutoStartEnabled)
+        {
+            await settings.SetAutoStartAsync(true, CancellationToken.None);
+        }
+
         _host.Services.GetRequiredService<IThemeService>().Apply(settings.Current.IsDarkMode);
         _host.Services.GetRequiredService<ILocalizationService>().SetLanguage(settings.Current.Language);
 
@@ -75,8 +81,6 @@ public partial class App : System.Windows.Application
         mainWindow.DataContext = _host.Services.GetRequiredService<MainViewModel>();
         if (_startInBackground)
         {
-            mainWindow.Show();
-            mainWindow.Hide();
             _host.Services.GetRequiredService<ITrayService>().HideMainWindow();
         }
         else

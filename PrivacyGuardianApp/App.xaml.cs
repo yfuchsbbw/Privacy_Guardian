@@ -12,10 +12,15 @@ namespace PrivacyGuardian;
 public partial class App : System.Windows.Application
 {
     private IHost? _host;
+    private bool _startInBackground;
 
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        _startInBackground = e.Args.Any(argument =>
+            argument.Equals("--background", StringComparison.OrdinalIgnoreCase) ||
+            argument.Equals("/background", StringComparison.OrdinalIgnoreCase) ||
+            argument.Equals("--silent", StringComparison.OrdinalIgnoreCase));
 
         _host = Host.CreateDefaultBuilder()
             .ConfigureServices((_, services) =>
@@ -68,7 +73,16 @@ public partial class App : System.Windows.Application
 
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.DataContext = _host.Services.GetRequiredService<MainViewModel>();
-        mainWindow.Show();
+        if (_startInBackground)
+        {
+            mainWindow.Show();
+            mainWindow.Hide();
+            _host.Services.GetRequiredService<ITrayService>().HideMainWindow();
+        }
+        else
+        {
+            mainWindow.Show();
+        }
     }
 
     protected override async void OnExit(ExitEventArgs e)

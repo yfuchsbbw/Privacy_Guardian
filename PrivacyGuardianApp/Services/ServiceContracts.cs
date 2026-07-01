@@ -69,6 +69,7 @@ public interface INotificationService
 public interface ITrayService : IDisposable
 {
     void Initialize(System.Windows.Window mainWindow);
+    void HideMainWindow();
     void ExitApplication();
 }
 

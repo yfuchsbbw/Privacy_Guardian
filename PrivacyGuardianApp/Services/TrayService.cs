@@ -33,6 +33,8 @@ public sealed class TrayService(ISettingsService settingsService) : ITrayService
         _notifyIcon.DoubleClick += (_, _) => ShowMainWindow();
     }
 
+    public void HideMainWindow() => HideToTray();
+
     public void ExitApplication()
     {
         _isExitRequested = true;

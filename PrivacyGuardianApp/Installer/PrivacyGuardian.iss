@@ -1,5 +1,5 @@
 #define MyAppName "Privacy Guardian"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "Privacy Guardian"
 #define MyAppExeName "PrivacyGuardian.exe"
 #define SourceDir "..\bin\Release\net8.0-windows\win-x64\publish"

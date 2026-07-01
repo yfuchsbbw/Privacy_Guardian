@@ -1,6 +1,6 @@
 {
-  "version": "1.0.1",
-  "installerUrl": "https://github.com/yfuchsbbw/Privacy_Guardian/releases/download/v1.0.1/PrivacyGuardianSetup-1.0.1.exe",
-  "releaseNotes": "Adds background tray mode, autostart option, live update support, UI improvements, and network monitor fixes.",
+  "version": "1.0.2",
+  "installerUrl": "https://github.com/yfuchsbbw/Privacy_Guardian/releases/download/v1.0.2/PrivacyGuardianSetup-1.0.2.exe",
+  "releaseNotes": "Starts silently in the tray when Windows starts.",
   "sha256": ""
 }

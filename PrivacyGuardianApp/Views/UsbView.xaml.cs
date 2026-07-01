@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class UsbView : UserControl
+public partial class UsbView : System.Windows.Controls.UserControl
 {
     public UsbView()
     {

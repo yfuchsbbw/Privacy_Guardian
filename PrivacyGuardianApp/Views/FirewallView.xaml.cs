@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class FirewallView : UserControl
+public partial class FirewallView : System.Windows.Controls.UserControl
 {
     public FirewallView()
     {

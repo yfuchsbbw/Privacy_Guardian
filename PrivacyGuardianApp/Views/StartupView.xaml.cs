@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class StartupView : UserControl
+public partial class StartupView : System.Windows.Controls.UserControl
 {
     public StartupView()
     {

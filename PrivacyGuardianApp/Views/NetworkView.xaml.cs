@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class NetworkView : UserControl
+public partial class NetworkView : System.Windows.Controls.UserControl
 {
     public NetworkView()
     {

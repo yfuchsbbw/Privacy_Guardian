@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class ProcessesView : UserControl
+public partial class ProcessesView : System.Windows.Controls.UserControl
 {
     public ProcessesView()
     {

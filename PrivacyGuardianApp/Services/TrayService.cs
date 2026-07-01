@@ -37,7 +37,7 @@ public sealed class TrayService(ISettingsService settingsService) : ITrayService
     {
         _isExitRequested = true;
         _notifyIcon?.Dispose();
-        Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());
+        System.Windows.Application.Current.Dispatcher.Invoke(() => System.Windows.Application.Current.Shutdown());
     }
 
     public void Dispose()

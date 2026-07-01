@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace PrivacyGuardian.Views;
 
-public partial class LogsView : UserControl
+public partial class LogsView : System.Windows.Controls.UserControl
 {
     public LogsView()
     {
